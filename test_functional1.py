@@ -15,16 +15,14 @@ class TestIPLAnalysis(unittest.TestCase):
         # Get the winner of the match with maximum win by runs
         winner_of_max_win_by_runs = self.matches_df.iloc[self.matches_df['win_by_runs'].idxmax()]['winner']
         expected_winner = 'Mumbai Indians'  # Expected winner for maximum win by runs
-        result = winner_of_max_win_by_runs == expected_winner
 
-        # Assert the test result using yakshaAssert method
-        self.test_utils_instance.yakshaAssert("test_winner_of_max_win_by_runs", result, "Functional")
-
-        # Print pass/fail message based on the test result
-        if result:
-            print("test_winner_of_max_win_by_runs = Passed")
+        # Test assertion using yakshaAssert
+        if winner_of_max_win_by_runs == expected_winner:
+            self.test_utils_instance.yakshaAssert("TestWinnerMaxRuns", True, "functional1")
+            print("TestWinnerMaxRuns Passed")
         else:
-            print("test_winner_of_max_win_by_runs = Failed")
+            self.test_utils_instance.yakshaAssert("TestWinnerMaxRuns", False, "functional1")
+            print("TestWinnerMaxRuns Failed")
 
 if __name__ == '__main__':
     unittest.main()
