@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 from matches import *
-from test.TestUtils import TestUtils
+from TestUtils import TestUtils
 
 class TestIPLAnalysis(unittest.TestCase):
 
@@ -18,11 +18,11 @@ class TestIPLAnalysis(unittest.TestCase):
 
         # Test assertion using yakshaAssert
         if winner_of_max_win_by_runs == expected_winner:
-            self.test_utils_instance.yakshaAssert("TestWinnerMaxRuns", True, "functional1")
-            print("TestWinnerMaxRuns Passed")
+            self.test_utils_instance.yakshaAssert("test_winner_of_max_win_by_run", True, "functional")
+            print("test_winner_of_max_win_by_runs = Passed")
         else:
-            self.test_utils_instance.yakshaAssert("TestWinnerMaxRuns", False, "functional1")
-            print("TestWinnerMaxRuns Failed")
+            self.test_utils_instance.yakshaAssert("test_winner_of_max_win_by_run", False, "functional")
+            print("test_winner_of_max_win_by_run = Failed")
 
 if __name__ == '__main__':
     unittest.main()
