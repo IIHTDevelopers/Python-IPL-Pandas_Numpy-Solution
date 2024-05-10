@@ -11,6 +11,7 @@ class TestIPLAnalysis(unittest.TestCase):
         # Instantiate an object of TestUtils
         self.test_utils_instance = TestUtils()
         self.test_utils = TestUtils()
+
     def test_winner_of_max_win_by_runs(self):
         # Get the winner of the match with maximum win by runs
         winner_of_max_win_by_runs = self.matches_df.iloc[self.matches_df['win_by_runs'].idxmax()]['winner']
@@ -49,7 +50,6 @@ class TestIPLAnalysis(unittest.TestCase):
         else:
             self.test_utils_instance.yakshaAssert("test_most_matches_season", False, "functional")
             print("test_most_matches_season = Failed")
-
 
     def test_most_played_venue(self):
         # Calculate the most played venue
@@ -126,24 +126,20 @@ class TestIPLAnalysis(unittest.TestCase):
         else:
             self.test_utils_instance.yakshaAssert("test_win_percentage_batting_second", False, "functional")
             print("test_win_percentage_batting_second = Failed")
+    def test_total_number_of_matches(self):
+        # Calculate the total number of matches
+        total_matches = self.matches_df.shape[0]
 
-    def test_win_percentage_batting_second(self):
-        num_of_wins = (self.matches_df['win_by_wickets'] > 0).sum()
-        num_of_loss = (self.matches_df['win_by_wickets'] == 0).sum()
-        total_matches = num_of_wins + num_of_loss
+        # Expected total number of matches
+        expected_total_matches = 636  # Update with the actual expected total number of matches
 
-        win_percentage_batting_second = (num_of_wins / total_matches) * 100
-
-        # Expected win percentage
-        expected_win_percentage = 53.301886792452834
-
-        # Check if the calculated win percentage matches the expected value
-        if round(win_percentage_batting_second, 2) == round(expected_win_percentage, 2):
-            self.test_utils_instance.yakshaAssert("test_win_percentage_batting_second", True, "functional")
-            print("test_win_percentage_batting_second = Passed")
+        # Check if the calculated total matches matches the expected value
+        if total_matches == expected_total_matches:
+            self.test_utils_instance.yakshaAssert("test_total_number_of_matches", True, "functional")
+            print("test_total_number_of_matches = Passed")
         else:
-            self.test_utils_instance.yakshaAssert("test_win_percentage_batting_second", False, "functional")
-            print("test_win_percentage_batting_second = Failed")
+            self.test_utils_instance.yakshaAssert("test_total_number_of_matches", False, "functional")
+            print("test_total_number_of_matches = Failed")
 
 if __name__ == '__main__':
     unittest.main()
