@@ -21,22 +21,12 @@ print("Winner of the match with maximum win by wickets:", winner_of_max_win_by_w
 most_matches_season = matches_df['season'].value_counts().idxmax()
 print("Season with the most number of matches played:", most_matches_season)
 
-player_of_match_counts = matches_df['player_of_match'].value_counts().head(1)
-print("Player with most player of the match awards:")
-print(player_of_match_counts)
 
 # Number of tied matches
 print("\nNumber of tied matches:")
 print(matches_df['result'].value_counts())
 
-plt.figure(figsize=(12, 6))
-sns.countplot(x='venue', data=matches_df)
-plt.title('Number of Matches Played at Each Venue')
-plt.xlabel('Venue')
-plt.ylabel('Number of Matches')
-plt.xticks(rotation='vertical')
-plt.tight_layout()
-plt.show()
+
 
 # Finding the most played venue
 most_played_venue = matches_df['venue'].value_counts().idxmax()
